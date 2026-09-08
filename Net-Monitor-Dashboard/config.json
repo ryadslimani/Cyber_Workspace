@@ -1,0 +1,15 @@
+{
+  "targets": [
+    {
+      "name": "Localhost-Gateway",
+      "host": "127.0.0.1",
+      "ports": [22, 80, 443, 3306]
+    },
+    {
+      "name": "DNS-Primary",
+      "host": "1.1.1.1",
+      "ports": [53]
+    }
+  ],
+  "check_interval_seconds": 60
+}
