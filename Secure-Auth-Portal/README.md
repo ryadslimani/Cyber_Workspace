@@ -1,24 +1,43 @@
-# Cyber_Workspace
+# Secure-Auth-Portal
 
-## 🛡️ Vue d'ensemble
-Bienvenue sur **Cyber_Workspace**, un dépôt de portfolio professionnel regroupant des projets axés sur la cybersécurité, l'ingénierie des systèmes, le développement d'applications sécurisées et les méthodologies Red/Blue Team. Ce dépôt centralise différentes applications et scripts pour démontrer des compétences concrètes en programmation, durcissement des systèmes et conception d'architectures sécurisées.
+Application modulaire en Python conçue pour démontrer les bonnes pratiques en matière de gestion des identités, de contrôle d'accès rigoureux et de persistance sécurisée des données.
+
+## 📂 Structure du Projet
+- `main.py` : Point d'entrée de l'application et gestion de l'interface en ligne de commande (CLI).
+- `auth.py` : Moteur de logique d'authentification et de sécurité cryptographique.
+- `database.py` : Couche d'abstraction des données et gestion de la base SQLite.
+
+## 🛠️ Outils & Technologies Utilisés
+- **Langage :** Python 3 (programmation orientée modules)
+- **Base de données :** SQLite (`secure_portal.db`)
+- **Sécurité :** Hachage cryptographique SHA-256 et requêtes paramétrées anti-injection SQL
+- **Environnement de développement :** Visual Studio Code
 
 ---
 
-## 📂 Structure du Dépôt
+## 🔐 Architecture & Sécurité Applicative
 
-```text
-Cyber_Workspace/
-│
-├── Purple-Scan-Lab/      # Scripts d'analyse offensive (Red Team) et de détection (Blue Team)
-├── Secure-Auth-Portal/   # Module d'authentification sécurisée et gestion de base de données
-└── README.md             # Documentation globale du portfolio
+Ce projet met en œuvre des standards stricts de développement sécurisé pour s'assurer qu'aucune information sensible n'est compromise lors des flux d'authentification.
 
-## 🛠️ Présentation Détaillée
+### 1. Point d'Entrée et Interface (`main.py`)
+- **Orchestration des flux :** Fait office de chef d'orchestre pour l'application en proposant un menu interactif clair en ligne de commande (CLI).
+- **Expérience utilisateur :** Permet de basculer intuitivement entre les phases d'inscription, de connexion et la gestion des sessions de manière fluide et sécurisée.
 
-### 2. Secure-Auth-Portal
-* **Objectif stratégique** : Concevoir et implémenter une application modulaire en Python rigoureuse, illustrant les standards industriels en matière de sécurité logicielle, de contrôle d'accès et d'intégrité des données.
-* **Architecture technique et modulaire** :
-  * `main.py` : Point d'entrée principal de l'application proposant une interface interactive en ligne de commande (CLI) fluide et structurée pour orchestrer l'ensemble des flux utilisateurs.
-  * `auth.py` : Moteur de gestion de la logique d'authentification et des sessions. Intègre un hachage cryptographique robuste des mots de passe (via l'algorithme SHA-256) afin de garantir qu'aucune donnée sensible ou information d'identification en clair ne transite ou ne soit stockée.
-  * `database.py` : Couche d'interaction et d'abstraction avec une base de données SQLite (`secure_portal.db`). Utilise des requêtes paramétrées de manière stricte pour neutraliser l'exposition aux vulnérabilités courantes de type injections SQL.
+### 2. Moteur d'Authentification (`auth.py`)
+- **Intégrité des mots de passe :** Aucun mot de passe utilisateur n'est manipulé ou stocké en clair. Le module applique systématiquement un hachage cryptographique irréversible (algorithme **SHA-256**).
+- **Vérification des accès :** Compare les empreintes numériques hachées lors des tentatives de connexion pour valider ou rejeter l'authentification en toute sécurité.
+
+### 3. Couche Persistance & Base de Données (`database.py`)
+- **Gestion SQLite :** Automatise la création, la configuration et la liaison avec le fichier de base de données local (`secure_portal.db`).
+- **Blindage contre les Injections SQL :** Utilise exclusivement des **requêtes paramétrées** pour séparer le code SQL des données utilisateurs entrantes, neutralisant ainsi les risques d'injections malveillantes.
+
+---
+
+## 🚀 Guide d'Exécution & Scénario d'Utilisation
+
+Pour lancer et tester l'application en local sur votre environnement de travail :
+
+1. Se placer dans le répertoire du projet :
+   ```bash
+   cd Secure-Auth-Portal
+   python main.py
